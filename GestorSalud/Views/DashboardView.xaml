@@ -1,0 +1,89 @@
+﻿<Window x:Class="GestorSalud.Views.DashboardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorSalud.Views"
+        mc:Ignorable="d"
+        Title="Mi Salud - Dashboard" Height="694" Width="1277" WindowStartupLocation="CenterScreen">
+    <Grid Background="#f8f9fa">
+        <!-- Header -->
+        <Border Background="#27ae60" Height="70" VerticalAlignment="Top">
+            <Grid>
+                <TextBlock Text="🍎 MI GESTOR DE NUTRICIÓN Y BIENESTAR" 
+                      FontSize="20" FontWeight="Bold" Foreground="White" 
+                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="txtUsuario" Text="Bienvenido" Foreground="White" 
+                      HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
+            </Grid>
+        </Border>
+
+        <!-- Estadísticas Rápidas -->
+        <Border Background="White" CornerRadius="10" Margin="20,90,20,0" Height="100" 
+            BorderBrush="#ddd" BorderThickness="1" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Background="#e8f5e8" CornerRadius="8" Padding="15" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="⚖️ Último Peso" FontSize="12" Foreground="#666"/>
+                        <TextBlock x:Name="txtUltimoPeso" Text="-- kg" FontSize="16" FontWeight="Bold" Foreground="#27ae60"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="#e3f2fd" CornerRadius="8" Padding="15" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="📊 IMC" FontSize="12" Foreground="#666"/>
+                        <TextBlock x:Name="txtIMC" Text="--" FontSize="16" FontWeight="Bold" Foreground="#2196f3"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="#fff3e0" CornerRadius="8" Padding="15" Margin="10">
+                    <StackPanel>
+                        <TextBlock Text="💧 Agua Hoy" FontSize="12" Foreground="#666"/>
+                        <TextBlock x:Name="txtAguaHoy" Text="0 vasos" FontSize="16" FontWeight="Bold" Foreground="#ff9800"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <!-- Menú Principal -->
+        <StackPanel Margin="20,200,20,20">
+            <TextBlock Text="¿Qué quieres registrar hoy?" FontSize="16" FontWeight="Bold" 
+                  Margin="0,0,0,20" Foreground="#333"/>
+
+            <WrapPanel>
+                <!-- CRUD 1: Perfil Salud -->
+                <Button Content="👤 Mi Perfil Salud" Width="180" Height="80" Margin="10" 
+                    Background="#3498db" Foreground="White" FontWeight="Bold" 
+                    FontSize="14" Click="AbrirPerfilSalud_Click"/>
+
+                <!-- CRUD 2: Registro Peso -->
+                <Button Content="⚖️ Registrar Peso" Width="180" Height="80" Margin="10" 
+                    Background="#2ecc71" Foreground="White" FontWeight="Bold" 
+                    FontSize="14" Click="AbrirRegistroPeso_Click"/>
+
+                <!-- CRUD 3: Registro Comidas -->
+                <Button Content="🍎 Comidas Hoy" Width="180" Height="80" Margin="10" 
+                    Background="#e67e22" Foreground="White" FontWeight="Bold" 
+                    FontSize="14" Click="AbrirRegistroComidas_Click"/>
+
+                <!-- No-CRUD: Calculadora IMC -->
+                <Button Content="📊 Calcular IMC" Width="180" Height="80" Margin="10" 
+                    Background="#9b59b6" Foreground="White" FontWeight="Bold" 
+                    FontSize="14" Click="AbrirCalculadoraIMC_Click"/>
+
+                <!-- CRUD 4: Hidratación -->
+                <Button Content="💧 Hidratación" Width="180" Height="80" Margin="10" 
+                    Background="#2196f3" Foreground="White" FontWeight="Bold" 
+                    FontSize="14" Click="AbrirHidratacion_Click"/>
+
+                <!-- CRUD 5: Actividad Física -->
+                <Button Content="🏃 Actividad Física" Width="180" Height="80" Margin="10"/>
+            </WrapPanel>
+
+            <Button Content="🚪 Cerrar Sesión" Width="150" Height="35" Margin="0,30,0,0" 
+                Background="#95a5a6" Foreground="White" Click="CerrarSesion_Click" 
+                HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>
+

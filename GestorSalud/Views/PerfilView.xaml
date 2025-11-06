@@ -1,0 +1,54 @@
+﻿<Window x:Class="GestorSalud.Views.PerfilView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorSalud.Views"
+        mc:Ignorable="d"
+        Title="PerfilView" Height="395" Width="498">
+    <Grid Margin="20">
+        <Border Background="White" CornerRadius="10" Padding="20" BorderBrush="#CCCCCC" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="Perfil del Usuario"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="#333"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Nombre:" FontWeight="Bold" Width="120"/>
+                    <TextBlock x:Name="txtNombre" Foreground="#444"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Correo:" FontWeight="Bold" Width="120"/>
+                    <TextBlock x:Name="txtCorreo" Foreground="#444"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Contraseña:" FontWeight="Bold" Width="120"/>
+                    <PasswordBox x:Name="txtContraseña" IsEnabled="False" Width="180" PasswordChar="●"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                    <Button Content="Cerrar sesión"
+                            Width="150"
+                            Height="35"
+                            Margin="5"
+                            Background="#e74c3c"
+                            Foreground="White"
+                            FontWeight="Bold"/>
+
+                    <Button Content="Editar perfil"
+                            Width="150"
+                            Height="35"
+                            Margin="5"
+                            Background="#3498db"
+                            Foreground="White"
+                            FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
