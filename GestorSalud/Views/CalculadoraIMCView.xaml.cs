@@ -58,35 +58,33 @@ namespace GestorSalud.Views
             {
                 clasificacion = "BAJO PESO";
                 recomendacion = "💡 Recomendación: Consulta con un nutricionista para ganar peso saludablemente.";
-                colorBarra = Color.FromRgb(241, 196, 15); // Amarillo
+                colorBarra = Color.FromRgb(241, 196, 15);
             }
             else if (imc < 25)
             {
                 clasificacion = "PESO NORMAL";
                 recomendacion = "✅ ¡Excelente! Mantén tus hábitos saludables.";
-                colorBarra = Color.FromRgb(46, 204, 113); // Verde
+                colorBarra = Color.FromRgb(46, 204, 113);
             }
             else if (imc < 30)
             {
                 clasificacion = "SOBREPESO";
                 recomendacion = "💪 Recomendación: Más actividad física y balance en tu alimentación.";
-                colorBarra = Color.FromRgb(230, 126, 34); // Naranja
+                colorBarra = Color.FromRgb(230, 126, 34);
             }
             else
             {
                 clasificacion = "OBESIDAD";
                 recomendacion = "🏥 Recomendación: Consulta con un profesional de la salud.";
-                colorBarra = Color.FromRgb(231, 76, 60); // Rojo
+                colorBarra = Color.FromRgb(231, 76, 60);
             }
 
-            // Mostrar resultados
             txtResultado.Text = $"IMC: {imc:F2}";
             txtClasificacion.Text = clasificacion;
             txtRecomendacion.Text = recomendacion;
 
-            // Animación barra de progreso
             double porcentaje = Math.Min((imc - 15) / (40 - 15) * 100, 100);
-            barraProgreso.Width = porcentaje * 2.5; // Ajuste visual
+            barraProgreso.Width = porcentaje * 2.5;
             barraProgreso.Background = new SolidColorBrush(colorBarra);
 
             borderResultado.Visibility = Visibility.Visible;
