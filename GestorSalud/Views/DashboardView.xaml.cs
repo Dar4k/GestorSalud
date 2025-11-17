@@ -21,6 +21,7 @@ namespace GestorSalud.Views
     {
         private UsuariosModel usuario;
         private RegistroPesoController registroController = new RegistroPesoController();
+        private HidratacionController hidratacionController = new HidratacionController();
 
         public DashboardView(UsuariosModel usuario)
         {
@@ -36,57 +37,52 @@ namespace GestorSalud.Views
         }
 
 
-        // MÉTODO SIMPLE PARA CARGAR EL ÚLTIMO IMC
         private void CargarUltimoRegistroIMC()
         {
             try
             {
                 var ultimoRegistro = registroController.ObtenerUltimoRegistro(usuario.Id);
+                var hidratacion = hidratacionController.ObtenerHidratacionPorUsuario(usuario.Id);
+                var agua = hidratacion.OrderByDescending(x => x.VasosAgua).FirstOrDefault();
 
                 if (ultimoRegistro != null)
                 {
-                    // SIMPLEMENTE MOSTRAR LOS DATOS
                     txtUltimoPeso.Text = $"{ultimoRegistro.Peso} kg";
                     txtIMC.Text = $"{ultimoRegistro.IMCCalculado:F1}";
+                    txtAguaHoy.Text = agua != null ? $"{agua.VasosAgua} vasos" : "0 vasos";
                 }
                 else
                 {
-                    // VALORES POR DEFECTO SI NO HAY REGISTROS
                     txtUltimoPeso.Text = "-- kg";
                     txtIMC.Text = "--";
                 }
             }
             catch (Exception ex)
             {
-                // EN CASO DE ERROR, MOSTRAR VALORES POR DEFECTO
                 txtUltimoPeso.Text = "-- kg";
                 txtIMC.Text = "--";
             }
         }
 
 
-        // CRUD 1: Perfil Salud
         private void AbrirPerfilSalud_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("👤 Perfil de Salud - Próximamente!", "En desarrollo",
                            MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // CRUD 2: Registro Peso
         private void AbrirRegistroPeso_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("⚖️ Registro de Peso - Próximamente!", "En desarrollo",
                            MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // CRUD 3: Registro Comidas
         private void AbrirRegistroComidas_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("🍎 Registro de Comidas - Próximamente!", "En desarrollo",
                            MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // No-CRUD: Calculadora IMC
         private void AbrirCalculadoraIMC_Click(object sender, RoutedEventArgs e)
         {
             CalculadoraIMCView imcView = new CalculadoraIMCView(usuario.Id);
@@ -94,24 +90,24 @@ namespace GestorSalud.Views
             CargarUltimoRegistroIMC();
         }
 
-        // CRUD 4: Hidratación
         private void AbrirHidratacion_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("💧 Hidratación - Próximamente!", "En desarrollo",
-                           MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        // CRUD 5: Actividad Física
-        private void AbrirActividadFisica_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("🏃 Actividad Física - Próximamente!", "En desarrollo",
-                           MessageBoxButton.OK, MessageBoxImage.Information);
+            HidratacionView hidratacionView = new HidratacionView(usuario.Id);
+            hidratacionView.Show();
+            this.Close();
         }
 
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             LoginView loginView = new LoginView();
             loginView.Show();
+            this.Close();
+        }
+
+        private void AbrirActividadFisica_Click(object sender, RoutedEventArgs e)
+        {
+            EjerciciosView ejerciciosView = new EjerciciosView(usuario.Id);
+            ejerciciosView.Show();
             this.Close();
         }
     }

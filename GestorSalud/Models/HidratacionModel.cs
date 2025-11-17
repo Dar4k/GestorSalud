@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace GestorSalud.Models
 {
-    class HidratacionModel
+    public class HidratacionModel
     {
+        public int Id { get; set; }
+        public int UsuarioId { get; set; }
+        public DateTime FechaRegistro { get; set; }
+        public int VasosAgua { get; set; }
+        public string OtrosLiquidos { get; set; }
+        public int TotalMl { get; set; }
     }
 }

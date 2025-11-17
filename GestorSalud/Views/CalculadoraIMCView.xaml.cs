@@ -10,7 +10,6 @@ namespace GestorSalud.Views
         private int usuarioId;
         private RegistroPesoController registroController = new RegistroPesoController();
 
-        // CONSTRUCTOR ACTUALIZADO QUE RECIBE EL USUARIO_ID
         public CalculadoraIMCView(int usuarioId)
         {
             InitializeComponent();
@@ -21,7 +20,6 @@ namespace GestorSalud.Views
         {
             try
             {
-                // VERIFICAR QUE LOS CAMPOS NO ESTÉN VACÍOS
                 if (string.IsNullOrEmpty(txtPeso.Text) || string.IsNullOrEmpty(txtAltura.Text))
                 {
                     MessageBox.Show("Por favor ingresa peso y altura.", "Error",
@@ -29,7 +27,6 @@ namespace GestorSalud.Views
                     return;
                 }
 
-                // INTENTAR CONVERTIR LOS VALORES
                 if (double.TryParse(txtPeso.Text.Replace(".", ","), out double peso) &&
                     double.TryParse(txtAltura.Text.Replace(".", ","), out double altura))
                 {
@@ -38,7 +35,6 @@ namespace GestorSalud.Views
                         double imc = Math.Round(peso / (altura * altura), 2);
                         string clasificacion = ClasificarIMC(imc);
 
-                        // USAR EL CONTROLLER PARA GUARDAR EN BD
                         bool guardado = registroController.GuardarRegistroIMC(usuarioId, peso, altura, imc, clasificacion);
 
                         if (guardado)
@@ -77,10 +73,12 @@ namespace GestorSalud.Views
 
         private string ClasificarIMC(double imc)
         {
-            if (imc < 18.5) return "🔶 BAJO PESO\n💡 Consulta un nutricionista";
-            else if (imc < 25) return "✅ PESO NORMAL\n¡Excelente!";
-            else if (imc < 30) return "🔶 SOBREPESO\n💪 Más ejercicio y dieta balanceada";
-            else return "🔴 OBESIDAD\n🏥 Consulta con un profesional";
+            if (imc < 18.5) return "Bajo peso";
+            else if (imc >= 18.5 && imc <= 24.9) return "Normal";
+            else if (imc >= 25 && imc <= 29.9) return "Sobrepeso";
+            else if (imc >= 30 && imc <= 34.9) return "Obesidad I";
+            else if (imc >= 35 && imc <= 39.9) return "Obesidad II";
+            else return "Obesidad III";
         }
 
         private void Cerrar_Click(object sender, RoutedEventArgs e)
