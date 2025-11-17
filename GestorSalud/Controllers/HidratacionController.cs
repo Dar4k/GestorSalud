@@ -25,5 +25,10 @@ namespace GestorSalud.Controllers
         {
             return dbHidratacionService.EditarHidratacion(hidratacion);
         }
+
+        public bool EliminarHidratacion(int Id)
+        {
+            return dbHidratacionService.EliminarHidratacion(Id);
+        }
     }
 }

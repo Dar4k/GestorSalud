@@ -90,7 +90,19 @@ namespace GestorSalud.Views
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
+            registroSeleccionado = dgHidratacion.SelectedItem as HidratacionModel;
+            bool result = hidratacionController.EliminarHidratacion(registroSeleccionado.Id);
 
+            if (result)
+            {
+                MessageBox.Show("Registro eliminado correctamente");
+                registroSeleccionado = null;
+                caragarRegistros();
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar el registro.");
+            }
         }
 
         private void LimpiarCampos()

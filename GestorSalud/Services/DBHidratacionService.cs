@@ -36,16 +36,21 @@ namespace GestorSalud.Services
             return false;
         }
 
-        public void EliminarHidratacion(int id)
+        public bool EliminarHidratacion(int id)
         {
             using var conn = new MySqlConnection(conexion);
             conn.Open();
 
-            string sql = "DELETE FROM registro_hidratacion WHERE usuario_id=@id";
+            string sql = "DELETE FROM registro_hidratacion WHERE id=@id";
             using var cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@id", id);
 
-            cmd.ExecuteNonQuery();
+            int result = cmd.ExecuteNonQuery();
+            if (result > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool EditarHidratacion(HidratacionModel hidratacion)
