@@ -1,0 +1,44 @@
+﻿<Window x:Class="GestorSalud.Views.InformeNutricionalView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="📈 Informe Nutricional Diario" Height="480" Width="790"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#f0f4f8">
+    <Grid Margin="20">
+        <Border Background="White" CornerRadius="12" Padding="20"
+                BorderBrush="#ddd" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="📊 Informe de Hoy" FontSize="18" FontWeight="Bold" 
+                           HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Calorías -->
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                        <TextBlock Text="🔥 Calorías" FontSize="12" Foreground="#666"/>
+                        <TextBlock x:Name="txtCalorias" Text="-- / 2000 kcal" FontSize="16" FontWeight="Bold" Foreground="#e67e22"/>
+                        <TextBlock x:Name="txtEstadoCalorias" Text="..." FontSize="12" Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <!-- IMC -->
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                        <TextBlock Text="⚖️ Último IMC" FontSize="12" Foreground="#666"/>
+                        <TextBlock x:Name="txtIMC" Text="--" FontSize="16" FontWeight="Bold" Foreground="#2196f3"/>
+                        <TextBlock x:Name="txtClasificacion" Text="Sin datos" FontSize="11" Foreground="#555" TextWrapping="Wrap" MaxWidth="150"/>
+                    </StackPanel>
+                </Grid>
+
+                <Separator Margin="0,25"/>
+
+                <TextBlock Text="💬 Recomendación Personalizada" FontSize="14" FontWeight="SemiBold" Margin="0,10,0,5"/>
+                <TextBlock x:Name="txtRecomendacion" Text="Cargando..." TextWrapping="Wrap" FontSize="12" Foreground="#333"/>
+
+                <Button Content="Cerrar" Background="#95a5a6" Foreground="White" 
+                        Height="32" Width="100" Margin="0,20,0,0" Click="Cerrar_Click" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

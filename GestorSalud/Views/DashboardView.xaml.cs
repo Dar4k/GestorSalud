@@ -45,7 +45,7 @@ namespace GestorSalud.Views
 
                 if (ultimoRegistro != null)
                 {
-                    // SIMPLEMENTE MOSTRAR LOS DATOS
+                    //  MOSTRAR LOS DATOS
                     txtUltimoPeso.Text = $"{ultimoRegistro.Peso} kg";
                     txtIMC.Text = $"{ultimoRegistro.IMCCalculado:F1}";
                 }
@@ -65,28 +65,28 @@ namespace GestorSalud.Views
         }
 
 
-        // CRUD 1: Perfil Salud
+        
         private void AbrirPerfilSalud_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("👤 Perfil de Salud - Próximamente!", "En desarrollo",
                            MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // CRUD 2: Registro Peso
+        
         private void AbrirRegistroPeso_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("⚖️ Registro de Peso - Próximamente!", "En desarrollo",
                            MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // CRUD 3: Registro Comidas
+        
         private void AbrirRegistroComidas_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("🍎 Registro de Comidas - Próximamente!", "En desarrollo",
-                           MessageBoxButton.OK, MessageBoxImage.Information);
+            var comidasView = new RegistroComidaView(usuario.Id);
+            comidasView.ShowDialog();
         }
 
-        // No-CRUD: Calculadora IMC
+        
         private void AbrirCalculadoraIMC_Click(object sender, RoutedEventArgs e)
         {
             CalculadoraIMCView imcView = new CalculadoraIMCView(usuario.Id);
@@ -94,18 +94,24 @@ namespace GestorSalud.Views
             CargarUltimoRegistroIMC();
         }
 
-        // CRUD 4: Hidratación
+        
         private void AbrirHidratacion_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("💧 Hidratación - Próximamente!", "En desarrollo",
                            MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // CRUD 5: Actividad Física
+        
         private void AbrirActividadFisica_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("🏃 Actividad Física - Próximamente!", "En desarrollo",
                            MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void AbrirInformeNutricional_Click(object sender, RoutedEventArgs e)
+        {
+            var informeView = new InformeNutricionalView(usuario.Id);
+            informeView.ShowDialog();
         }
 
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)

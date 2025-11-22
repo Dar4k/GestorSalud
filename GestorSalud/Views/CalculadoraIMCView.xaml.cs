@@ -77,10 +77,10 @@ namespace GestorSalud.Views
 
         private string ClasificarIMC(double imc)
         {
-            if (imc < 18.5) return "🔶 BAJO PESO\n💡 Consulta un nutricionista";
-            else if (imc < 25) return "✅ PESO NORMAL\n¡Excelente!";
-            else if (imc < 30) return "🔶 SOBREPESO\n💪 Más ejercicio y dieta balanceada";
-            else return "🔴 OBESIDAD\n🏥 Consulta con un profesional";
+            if (imc < 18.5) return "BAJO PESO\nConsulta un nutricionista";
+            else if (imc < 25) return "PESO NORMAL\n¡Excelente!";
+            else if (imc < 30) return "SOBREPESO\nMás ejercicio y dieta balanceada";
+            else return "OBESIDAD\nConsulta con un profesional";
         }
 
         private void Cerrar_Click(object sender, RoutedEventArgs e)

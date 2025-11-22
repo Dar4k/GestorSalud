@@ -61,12 +61,12 @@
                     Background="#2ecc71" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirRegistroPeso_Click"/>
 
-                <!-- CRUD 3: Registro Comidas -->
+
                 <Button Content="🍎 Comidas Hoy" Width="180" Height="80" Margin="10" 
                     Background="#e67e22" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirRegistroComidas_Click"/>
 
-                <!-- No-CRUD: Calculadora IMC -->
+
                 <Button Content="📊 Calcular IMC" Width="180" Height="80" Margin="10" 
                     Background="#9b59b6" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirCalculadoraIMC_Click"/>
@@ -86,6 +86,12 @@
                 Background="#95a5a6" Foreground="White" Click="CerrarSesion_Click" 
                 HorizontalAlignment="Center"/>
         </StackPanel>
+
+        <Button Content="📈 Informe Nutricional" Width="154" Height="26" Margin="20,0,0,34"
+        VerticalAlignment="Bottom" HorizontalAlignment="Left"
+        Background="#f39c12" Foreground="White" FontWeight="Bold" 
+        FontSize="13" Click="AbrirInformeNutricional_Click" RenderTransformOrigin="0.633,-0.06"/>
+
     </Grid>
 </Window>
 
