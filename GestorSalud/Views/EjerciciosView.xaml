@@ -5,57 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestorSalud.Views"
         mc:Ignorable="d"
-        Title="EjerciciosView" Height="450" Width="800">
+        Title="Ejercicios Recomendados" Height="500" Width="850"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="20">
         <Border Background="White" CornerRadius="10" Padding="20" BorderBrush="#dce1e7" BorderThickness="1">
             <StackPanel>
 
-                <TextBlock Text="Ejercicios Recomendados para Tu Salud"
-                           FontSize="26"
-                           FontWeight="Bold"
-                           Foreground="#34495e"
-                           HorizontalAlignment="Center"
-                           Margin="0 0 0 20" />
+                <!-- Header mejorado -->
+                <StackPanel HorizontalAlignment="Center" Margin="0,0,0,20">
+                    <TextBlock Text="💪"
+                               FontSize="28"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,5"/>
+                    <TextBlock Text="Ejercicios Recomendados para Tu Salud"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               Foreground="#34495e"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Basados en tu índice de masa corporal (IMC)"
+                               FontSize="12"
+                               HorizontalAlignment="Center"
+                               Foreground="#7f8c8d"/>
+                </StackPanel>
 
-                <TextBlock Text="Basados en tu índice de masa corporal (IMC)"
-                           FontSize="14"
-                           HorizontalAlignment="Center"
-                           Foreground="#7f8c8d"
-                           Margin="0 0 0 25"/>
+                <!-- ListView con mejor diseño -->
+                <Border BorderBrush="#ddd" BorderThickness="1" CornerRadius="5" 
+                        Margin="0,0,0,20" Background="#f8f9fa">
+                    <ListView x:Name="lvEjercicios" 
+                              Height="250" 
+                              FontSize="11"
+                              Background="White"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Ejercicio" 
+                                                DisplayMemberBinding="{Binding EjercicioRecomendado}" 
+                                                Width="220"/>
+                                <GridViewColumn Header="Clasificación IMC" 
+                                                DisplayMemberBinding="{Binding ClasificacionImc}" 
+                                                Width="150"/>
+                                <GridViewColumn Header="Intensidad" 
+                                                DisplayMemberBinding="{Binding Intensidad}" 
+                                                Width="100"/>
+                                <GridViewColumn Header="Duración (min)" 
+                                                DisplayMemberBinding="{Binding DuracionSugerida}" 
+                                                Width="90"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Border>
 
-                <ListView x:Name="lvEjercicios" BorderBrush="Transparent" Background="White">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Ejercicio" DisplayMemberBinding="{Binding EjercicioRecomendado}" Width="250"/>
-                            <GridViewColumn Header="IMC" DisplayMemberBinding="{Binding ClasificacionImc}" Width="80"/>
-                            <GridViewColumn Header="Intensidad" DisplayMemberBinding="{Binding Intensidad}" Width="120"/>
-                            <GridViewColumn Header="Duración (min)" DisplayMemberBinding="{Binding DuracionSugerida}" Width="100"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                <!-- Botones alineados horizontalmente -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <Button Content="📄 Descargar PDF"
+                            Width="130"
+                            Height="35"
+                            Margin="10,0"
+                            Padding="8"
+                            Background="#27ae60"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderBrush="Transparent"
+                            Click="DescargarPDF_Click"/>
 
-                <Button Content="Volver"
-                        HorizontalAlignment="Right"
-                        Margin="0 80 0 0"
-                        Width="100"
-                        
-                        Padding="8"
-                        Background="#2980b9"
-                        Foreground="White"
-                        FontWeight="Bold"
-                        BorderBrush="Transparent"
-                        Click="Volver_Click"/>
-
-                <Button Content="Descargar PDF"
-                    HorizontalAlignment="Left"
-                    Margin="0 80 0 0"
-                    Width="150"
-                    Padding="8"
-                    Background="#27ae60"
-                    Foreground="White"
-                    FontWeight="Bold"
-                    BorderBrush="Transparent"
-                    Click="DescargarPDF_Click"/>
+                    <Button Content="← Volver"
+                            Width="100"
+                            Height="35"
+                            Margin="10,0"
+                            Padding="8"
+                            Background="#2980b9"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderBrush="Transparent"
+                            Click="Volver_Click"/>
+                </StackPanel>
 
             </StackPanel>
         </Border>

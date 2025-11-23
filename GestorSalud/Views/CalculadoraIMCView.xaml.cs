@@ -6,14 +6,14 @@ namespace GestorSalud.Views
 {
     public partial class CalculadoraIMCView : Window
     {
-        private int _userId;
-        private RegistroPesoController _pesoController;
+        private RegistroPesoController registroController = new RegistroPesoController();
+        private int usuarioId;
 
         public CalculadoraIMCView(int usuarioId)
         {
             InitializeComponent();
-            _userId = usuarioId;
-            _pesoController = new RegistroPesoController();
+            this.usuarioId = usuarioId;
+            
         }
 
         private void Calcular_Click(object sender, RoutedEventArgs e)
@@ -32,13 +32,11 @@ namespace GestorSalud.Views
                 {
                     if (peso > 0 && altura > 0 && altura < 3)
                     {
-                        double imc = _pesoController.CalcularIMC(peso, altura);
-                        string clasificacion = _pesoController.ClasificarIMC(imc);
+                        double imc = Math.Round(peso / (altura * altura), 2);
+                        string clasificacion = ClasificarIMC(imc);
+
 
                         bool guardado = registroController.GuardarRegistroIMC(usuarioId, peso, altura, imc, clasificacion);
-                        // USAR EL CONTROLLER PARA GUARDAR EN BD
-                        bool guardado = _pesoController.GuardarRegistroIMC(_userId, peso, altura, imc, clasificacion);
-
                         if (guardado)
                         {
                             MessageBox.Show($"✅ IMC guardado en tu historial: {imc:F2}\n{clasificacion}",
