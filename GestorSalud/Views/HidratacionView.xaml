@@ -1,0 +1,66 @@
+﻿<Window x:Class="GestorSalud.Views.HidratacionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorSalud.Views"
+        mc:Ignorable="d"
+        Title="HidratacionView" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="💧 Registro de Hidratación" 
+                   FontSize="26" FontWeight="Bold" Margin="0 0 0 20"
+                   HorizontalAlignment="Center"/>
+
+        <Grid Grid.Row="1" Margin="0 10 0 15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="5">
+                <TextBlock Text="Liquido:" FontWeight="Bold"/>
+                <TextBox x:Name="txtOtrosLiquidos" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Margin="5" Grid.Column="1">
+                <TextBlock Text="Vasos de Agua:" FontWeight="Bold"/>
+                <TextBox x:Name="txtVasos" Width="200" />
+            </StackPanel>
+
+            <StackPanel Margin="5" Grid.Column="2">
+                <TextBlock Text="Mililitros consumidos:" FontWeight="Bold"/>
+                <TextBox x:Name="txtTotalMl" Width="200" Background="#dfeef0"/>
+            </StackPanel>
+        </Grid>
+
+        <DataGrid x:Name="dgHidratacion" Grid.Row="2" 
+                  AutoGenerateColumns="False" IsReadOnly="True" Margin="0 0 0 20" Height="250"
+                  MouseDoubleClick="dgHidratacion_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Fecha" Binding="{Binding FechaRegistro, StringFormat=\{0:dd/MM/yyyy\}}" Width="150"/>
+                <DataGridTextColumn Header="Vasos" Binding="{Binding VasosAgua}" Width="80"/>
+                <DataGridTextColumn Header="Total ml" Binding="{Binding TotalMl}" Width="100"/>
+                <DataGridTextColumn Header="Líquidos" Binding="{Binding OtrosLiquidos}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Botones -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
+            <Button Content="Guardar" Width="100" Margin="10" Padding="8"
+                    Background="#27ae60" Foreground="White" Click="BtnGuardar_Click"/>
+            <Button Content="Eliminar" Width="100" Margin="10" Padding="8"
+                    Background="#c0392b" Foreground="White" Click="BtnEliminar_Click"/>
+            <Button Content="Volver" Width="100" Margin="10" Padding="8"
+                    Background="#2980b9" Foreground="White" Click="Volver_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Windows;
 using GestorSalud.Controllers;
-using MySql.Data.MySqlClient;
 
 namespace GestorSalud.Views
 {
     public partial class CalculadoraIMCView : Window
     {
-        private int usuarioId;
         private RegistroPesoController registroController = new RegistroPesoController();
+        private int usuarioId;
 
-        
         public CalculadoraIMCView(int usuarioId)
         {
             InitializeComponent();
             this.usuarioId = usuarioId;
+            
         }
 
         private void Calcular_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                
                 if (string.IsNullOrEmpty(txtPeso.Text) || string.IsNullOrEmpty(txtAltura.Text))
                 {
                     MessageBox.Show("Por favor ingresa peso y altura.", "Error",
@@ -29,7 +27,6 @@ namespace GestorSalud.Views
                     return;
                 }
 
-                
                 if (double.TryParse(txtPeso.Text.Replace(".", ","), out double peso) &&
                     double.TryParse(txtAltura.Text.Replace(".", ","), out double altura))
                 {
@@ -38,15 +35,18 @@ namespace GestorSalud.Views
                         double imc = Math.Round(peso / (altura * altura), 2);
                         string clasificacion = ClasificarIMC(imc);
 
-                        
-                        bool guardado = registroController.GuardarRegistroIMC(usuarioId, peso, altura, imc, clasificacion);
 
+                        bool guardado = registroController.GuardarRegistroIMC(usuarioId, peso, altura, imc, clasificacion);
                         if (guardado)
                         {
                             MessageBox.Show($"✅ IMC guardado en tu historial: {imc:F2}\n{clasificacion}",
                                           "Resultado IMC",
                                           MessageBoxButton.OK,
                                           MessageBoxImage.Information);
+
+                            // Retornar true indicando que se guardó exitosamente
+                            this.DialogResult = true;
+                            this.Close();
                         }
                         else
                         {
@@ -77,10 +77,12 @@ namespace GestorSalud.Views
 
         private string ClasificarIMC(double imc)
         {
-            if (imc < 18.5) return "BAJO PESO\nConsulta un nutricionista";
-            else if (imc < 25) return "PESO NORMAL\n¡Excelente!";
-            else if (imc < 30) return "SOBREPESO\nMás ejercicio y dieta balanceada";
-            else return "OBESIDAD\nConsulta con un profesional";
+            if (imc < 18.5) return "Bajo peso";
+            else if (imc >= 18.5 && imc <= 24.9) return "Normal";
+            else if (imc >= 25 && imc <= 29.9) return "Sobrepeso";
+            else if (imc >= 30 && imc <= 34.9) return "Obesidad I";
+            else if (imc >= 35 && imc <= 39.9) return "Obesidad II";
+            else return "Obesidad III";
         }
 
         private void Cerrar_Click(object sender, RoutedEventArgs e)
