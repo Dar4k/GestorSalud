@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Windows;
 using GestorSalud.Controllers;
-using MySql.Data.MySqlClient;
 
 namespace GestorSalud.Views
 {
     public partial class CalculadoraIMCView : Window
     {
-        private int usuarioId;
-        private RegistroPesoController registroController = new RegistroPesoController();
+        private int _userId;
+        private RegistroPesoController _pesoController;
 
         public CalculadoraIMCView(int usuarioId)
         {
             InitializeComponent();
-            this.usuarioId = usuarioId;
+            _userId = usuarioId;
+            _pesoController = new RegistroPesoController();
         }
 
         private void Calcular_Click(object sender, RoutedEventArgs e)
@@ -32,10 +32,12 @@ namespace GestorSalud.Views
                 {
                     if (peso > 0 && altura > 0 && altura < 3)
                     {
-                        double imc = Math.Round(peso / (altura * altura), 2);
-                        string clasificacion = ClasificarIMC(imc);
+                        double imc = _pesoController.CalcularIMC(peso, altura);
+                        string clasificacion = _pesoController.ClasificarIMC(imc);
 
                         bool guardado = registroController.GuardarRegistroIMC(usuarioId, peso, altura, imc, clasificacion);
+                        // USAR EL CONTROLLER PARA GUARDAR EN BD
+                        bool guardado = _pesoController.GuardarRegistroIMC(_userId, peso, altura, imc, clasificacion);
 
                         if (guardado)
                         {
@@ -43,6 +45,10 @@ namespace GestorSalud.Views
                                           "Resultado IMC",
                                           MessageBoxButton.OK,
                                           MessageBoxImage.Information);
+
+                            // Retornar true indicando que se guardó exitosamente
+                            this.DialogResult = true;
+                            this.Close();
                         }
                         else
                         {

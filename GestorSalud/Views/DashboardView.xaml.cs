@@ -54,14 +54,35 @@ namespace GestorSalud.Views
 
         private void AbrirPerfilSalud_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("👤 Perfil de Salud - Próximamente!", "En desarrollo",
-                           MessageBoxButton.OK, MessageBoxImage.Information);
+            // Abrir la vista de perfil de salud pasando el Id del usuario
+            var perfilView = new PerfilSaludView(usuario.Id);
+            perfilView.Owner = this;
+            perfilView.ShowDialog();
         }
 
         private void AbrirRegistroPeso_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("⚖️ Registro de Peso - Próximamente!", "En desarrollo",
-                           MessageBoxButton.OK, MessageBoxImage.Information);
+            var registroPesoView = new RegistroPesoView(usuario.Id);
+            registroPesoView.Owner = this;
+
+            // Mostrar la ventana y esperar a que se cierre
+            bool? result = registroPesoView.ShowDialog();
+
+            // Si se guardó exitosamente (ventana se cerró después de guardar)
+            if (result == true) 
+            {
+                // Actualizar inmediatamente las estadísticas
+                CargarUltimoRegistroIMC();
+                MessageBox.Show("✅ Peso registrado exitosamente. Estadísticas actualizadas.",
+                               "Éxito",
+                               MessageBoxButton.OK,
+                               MessageBoxImage.Information);
+            }
+            else
+            {
+                // Si el usuario cerró sin guardar, también actualizar por si acaso
+                CargarUltimoRegistroIMC();
+            }
         }
 
         private void AbrirRegistroComidas_Click(object sender, RoutedEventArgs e)
@@ -73,8 +94,14 @@ namespace GestorSalud.Views
         private void AbrirCalculadoraIMC_Click(object sender, RoutedEventArgs e)
         {
             CalculadoraIMCView imcView = new CalculadoraIMCView(usuario.Id);
-            imcView.ShowDialog();
-            CargarUltimoRegistroIMC();
+            imcView.Owner = this;
+            bool? result = imcView.ShowDialog();
+
+            // Actualizar estadísticas después de usar la calculadora
+            if (result == true)
+            {
+                CargarUltimoRegistroIMC();
+            }
         }
 
         private void AbrirHidratacion_Click(object sender, RoutedEventArgs e)
