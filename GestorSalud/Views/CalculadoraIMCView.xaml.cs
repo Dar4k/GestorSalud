@@ -10,7 +10,7 @@ namespace GestorSalud.Views
         private int usuarioId;
         private RegistroPesoController registroController = new RegistroPesoController();
 
-        // CONSTRUCTOR ACTUALIZADO QUE RECIBE EL USUARIO_ID
+        
         public CalculadoraIMCView(int usuarioId)
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace GestorSalud.Views
         {
             try
             {
-                // VERIFICAR QUE LOS CAMPOS NO ESTÉN VACÍOS
+                
                 if (string.IsNullOrEmpty(txtPeso.Text) || string.IsNullOrEmpty(txtAltura.Text))
                 {
                     MessageBox.Show("Por favor ingresa peso y altura.", "Error",
@@ -29,7 +29,7 @@ namespace GestorSalud.Views
                     return;
                 }
 
-                // INTENTAR CONVERTIR LOS VALORES
+                
                 if (double.TryParse(txtPeso.Text.Replace(".", ","), out double peso) &&
                     double.TryParse(txtAltura.Text.Replace(".", ","), out double altura))
                 {
@@ -38,7 +38,7 @@ namespace GestorSalud.Views
                         double imc = Math.Round(peso / (altura * altura), 2);
                         string clasificacion = ClasificarIMC(imc);
 
-                        // USAR EL CONTROLLER PARA GUARDAR EN BD
+                        
                         bool guardado = registroController.GuardarRegistroIMC(usuarioId, peso, altura, imc, clasificacion);
 
                         if (guardado)

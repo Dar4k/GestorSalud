@@ -16,14 +16,14 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Calorías -->
+                    
                     <StackPanel Grid.Column="0" HorizontalAlignment="Center">
                         <TextBlock Text="🔥 Calorías" FontSize="12" Foreground="#666"/>
                         <TextBlock x:Name="txtCalorias" Text="-- / 2000 kcal" FontSize="16" FontWeight="Bold" Foreground="#e67e22"/>
                         <TextBlock x:Name="txtEstadoCalorias" Text="..." FontSize="12" Margin="0,5,0,0"/>
                     </StackPanel>
 
-                    <!-- IMC -->
+                    
                     <StackPanel Grid.Column="1" HorizontalAlignment="Center">
                         <TextBlock Text="⚖️ Último IMC" FontSize="12" Foreground="#666"/>
                         <TextBlock x:Name="txtIMC" Text="--" FontSize="16" FontWeight="Bold" Foreground="#2196f3"/>

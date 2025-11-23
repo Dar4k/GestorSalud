@@ -17,7 +17,7 @@ namespace GestorSalud.Controllers
             var totalCalorias = _service.ObtenerTotalCaloriasHoy(usuarioId);
             var (imc, clasif) = _service.ObtenerUltimoIMC(usuarioId);
 
-            // Recomendación básica
+            
             string recomendacion = "Registra tus comidas para ver recomendaciones.";
             if (imc.HasValue)
             {

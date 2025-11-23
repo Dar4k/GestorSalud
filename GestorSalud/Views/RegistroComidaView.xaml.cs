@@ -53,7 +53,7 @@ namespace GestorSalud.Views
         {
             try
             {
-                // Validación básica
+                
                 if (string.IsNullOrWhiteSpace(txtAlimentos.Text))
                 {
                     MessageBox.Show("Por favor, ingresa qué comiste.", "Advertencia",
@@ -81,14 +81,14 @@ namespace GestorSalud.Views
 
                 if (_comidaEnEdicion != null)
                 {
-                    // Modo edición
+                   
                     comida.Id = _comidaEnEdicion.Id;
                     comida.FechaComida = _comidaEnEdicion.FechaComida;
                     exito = _controller.ActualizarComida(comida);
                 }
                 else
                 {
-                    // Modo creación
+                    
                     exito = _controller.GuardarComida(comida);
                 }
 
@@ -120,7 +120,7 @@ namespace GestorSalud.Views
         {
             if (_comidaSeleccionada == null) return;
 
-            // Cargar en formulario
+            
             for (int i = 0; i < cmbTipoComida.Items.Count; i++)
             {
                 if (cmbTipoComida.Items[i] is ComboBoxItem item &&

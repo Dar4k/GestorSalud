@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Mi Salud - Dashboard" Height="694" Width="1277" WindowStartupLocation="CenterScreen">
     <Grid Background="#f8f9fa">
-        <!-- Header -->
+        
         <Border Background="#27ae60" Height="70" VerticalAlignment="Top">
             <Grid>
                 <TextBlock Text="🍎 MI GESTOR DE NUTRICIÓN Y BIENESTAR" 
@@ -18,7 +18,7 @@
             </Grid>
         </Border>
 
-        <!-- Estadísticas Rápidas -->
+        
         <Border Background="White" CornerRadius="10" Margin="20,90,20,0" Height="100" 
             BorderBrush="#ddd" BorderThickness="1" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -45,7 +45,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Menú Principal -->
+        
         <StackPanel Margin="20,200,20,20">
             <TextBlock Text="¿Qué quieres registrar hoy?" FontSize="16" FontWeight="Bold" 
                   Margin="0,0,0,20" Foreground="#333"/>

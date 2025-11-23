@@ -36,7 +36,7 @@ namespace GestorSalud.Views
         }
 
 
-        // MÉTODO SIMPLE PARA CARGAR EL ÚLTIMO IMC
+        
         private void CargarUltimoRegistroIMC()
         {
             try
@@ -45,20 +45,20 @@ namespace GestorSalud.Views
 
                 if (ultimoRegistro != null)
                 {
-                    //  MOSTRAR LOS DATOS
+                    
                     txtUltimoPeso.Text = $"{ultimoRegistro.Peso} kg";
                     txtIMC.Text = $"{ultimoRegistro.IMCCalculado:F1}";
                 }
                 else
                 {
-                    // VALORES POR DEFECTO SI NO HAY REGISTROS
+                    
                     txtUltimoPeso.Text = "-- kg";
                     txtIMC.Text = "--";
                 }
             }
             catch (Exception ex)
             {
-                // EN CASO DE ERROR, MOSTRAR VALORES POR DEFECTO
+                
                 txtUltimoPeso.Text = "-- kg";
                 txtIMC.Text = "--";
             }

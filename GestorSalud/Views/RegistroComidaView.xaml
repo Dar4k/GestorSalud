@@ -11,7 +11,7 @@
             <ColumnDefinition Width="220"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Formulario -->
+        
         <Border Background="White" CornerRadius="10" Padding="20"
                 BorderBrush="#dde4eb" BorderThickness="1">
             <StackPanel>
@@ -75,10 +75,10 @@
             </StackPanel>
         </Border>
 
-        <!-- Separador -->
+        
         <Rectangle Grid.Column="1" Fill="#e1e8ed" Margin="0,30,0,30"/>
 
-        <!-- Lista -->
+        
         <Border Grid.Column="2" Background="White" CornerRadius="10" Padding="15"
                 BorderBrush="#dde4eb" BorderThickness="1">
             <StackPanel>
