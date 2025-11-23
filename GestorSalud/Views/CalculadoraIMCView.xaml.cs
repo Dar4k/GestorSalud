@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Windows;
 using GestorSalud.Controllers;
-using MySql.Data.MySqlClient;
 
 namespace GestorSalud.Views
 {
     public partial class CalculadoraIMCView : Window
     {
-        private int usuarioId;
-        private RegistroPesoController registroController = new RegistroPesoController();
+        private int _userId;
+        private RegistroPesoController _pesoController;
 
-        // CONSTRUCTOR ACTUALIZADO QUE RECIBE EL USUARIO_ID
+        // CONSTRUCTOR
         public CalculadoraIMCView(int usuarioId)
         {
             InitializeComponent();
-            this.usuarioId = usuarioId;
+            _userId = usuarioId;
+            _pesoController = new RegistroPesoController();
         }
 
         private void Calcular_Click(object sender, RoutedEventArgs e)
@@ -35,11 +35,11 @@ namespace GestorSalud.Views
                 {
                     if (peso > 0 && altura > 0 && altura < 3)
                     {
-                        double imc = Math.Round(peso / (altura * altura), 2);
-                        string clasificacion = ClasificarIMC(imc);
+                        double imc = _pesoController.CalcularIMC(peso, altura);
+                        string clasificacion = _pesoController.ClasificarIMC(imc);
 
                         // USAR EL CONTROLLER PARA GUARDAR EN BD
-                        bool guardado = registroController.GuardarRegistroIMC(usuarioId, peso, altura, imc, clasificacion);
+                        bool guardado = _pesoController.GuardarRegistroIMC(_userId, peso, altura, imc, clasificacion);
 
                         if (guardado)
                         {
@@ -47,6 +47,10 @@ namespace GestorSalud.Views
                                           "Resultado IMC",
                                           MessageBoxButton.OK,
                                           MessageBoxImage.Information);
+
+                            // Retornar true indicando que se guardó exitosamente
+                            this.DialogResult = true;
+                            this.Close();
                         }
                         else
                         {
@@ -73,14 +77,6 @@ namespace GestorSalud.Views
                 MessageBox.Show($"Error: {ex.Message}", "Error",
                               MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        private string ClasificarIMC(double imc)
-        {
-            if (imc < 18.5) return "🔶 BAJO PESO\n💡 Consulta un nutricionista";
-            else if (imc < 25) return "✅ PESO NORMAL\n¡Excelente!";
-            else if (imc < 30) return "🔶 SOBREPESO\n💪 Más ejercicio y dieta balanceada";
-            else return "🔴 OBESIDAD\n🏥 Consulta con un profesional";
         }
 
         private void Cerrar_Click(object sender, RoutedEventArgs e)
