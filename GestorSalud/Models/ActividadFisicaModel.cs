@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace GestorSalud.Models
 {
-    internal class ActividadFisicaModel
+    public class ActividadFisicaModel
     {
+        public string ClasificacionImc { get; set; }
+        public string EjercicioRecomendado { get; set; }
+        public string Intensidad { get; set; }
+        public int DuracionSugerida { get; set; }
     }
 }

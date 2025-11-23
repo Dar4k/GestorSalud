@@ -1,0 +1,63 @@
+﻿<Window x:Class="GestorSalud.Views.EjerciciosView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorSalud.Views"
+        mc:Ignorable="d"
+        Title="EjerciciosView" Height="450" Width="800">
+    <Grid Margin="20">
+        <Border Background="White" CornerRadius="10" Padding="20" BorderBrush="#dce1e7" BorderThickness="1">
+            <StackPanel>
+
+                <TextBlock Text="Ejercicios Recomendados para Tu Salud"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="#34495e"
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 20" />
+
+                <TextBlock Text="Basados en tu índice de masa corporal (IMC)"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           Foreground="#7f8c8d"
+                           Margin="0 0 0 25"/>
+
+                <ListView x:Name="lvEjercicios" BorderBrush="Transparent" Background="White">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Ejercicio" DisplayMemberBinding="{Binding EjercicioRecomendado}" Width="250"/>
+                            <GridViewColumn Header="IMC" DisplayMemberBinding="{Binding ClasificacionImc}" Width="80"/>
+                            <GridViewColumn Header="Intensidad" DisplayMemberBinding="{Binding Intensidad}" Width="120"/>
+                            <GridViewColumn Header="Duración (min)" DisplayMemberBinding="{Binding DuracionSugerida}" Width="100"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Button Content="Volver"
+                        HorizontalAlignment="Right"
+                        Margin="0 80 0 0"
+                        Width="100"
+                        
+                        Padding="8"
+                        Background="#2980b9"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderBrush="Transparent"
+                        Click="Volver_Click"/>
+
+                <Button Content="Descargar PDF"
+                    HorizontalAlignment="Left"
+                    Margin="0 80 0 0"
+                    Width="150"
+                    Padding="8"
+                    Background="#27ae60"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderBrush="Transparent"
+                    Click="DescargarPDF_Click"/>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

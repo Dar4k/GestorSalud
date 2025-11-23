@@ -1,19 +1,6 @@
 ﻿using GestorSalud.Controllers;
 using GestorSalud.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GestorSalud.Views
 {
@@ -21,6 +8,7 @@ namespace GestorSalud.Views
     {
         private UsuariosModel usuario;
         private RegistroPesoController registroController = new RegistroPesoController();
+        private HidratacionController hidratacionController = new HidratacionController();
 
         public DashboardView(UsuariosModel usuario)
         {
@@ -36,36 +24,34 @@ namespace GestorSalud.Views
         }
 
 
-        // MÉTODO SIMPLE PARA CARGAR EL ÚLTIMO IMC
         private void CargarUltimoRegistroIMC()
         {
             try
             {
                 var ultimoRegistro = registroController.ObtenerUltimoRegistro(usuario.Id);
+                var hidratacion = hidratacionController.ObtenerHidratacionPorUsuario(usuario.Id);
+                var agua = hidratacion.OrderByDescending(x => x.VasosAgua).FirstOrDefault();
 
                 if (ultimoRegistro != null)
                 {
-                    // SIMPLEMENTE MOSTRAR LOS DATOS
                     txtUltimoPeso.Text = $"{ultimoRegistro.Peso} kg";
                     txtIMC.Text = $"{ultimoRegistro.IMCCalculado:F1}";
+                    txtAguaHoy.Text = agua != null ? $"{agua.VasosAgua} vasos" : "0 vasos";
                 }
                 else
                 {
-                    // VALORES POR DEFECTO SI NO HAY REGISTROS
                     txtUltimoPeso.Text = "-- kg";
                     txtIMC.Text = "--";
                 }
             }
             catch (Exception ex)
             {
-                // EN CASO DE ERROR, MOSTRAR VALORES POR DEFECTO
                 txtUltimoPeso.Text = "-- kg";
                 txtIMC.Text = "--";
             }
         }
 
 
-        // CRUD 1: Perfil Salud
         private void AbrirPerfilSalud_Click(object sender, RoutedEventArgs e)
         {
             // Abrir la vista de perfil de salud pasando el Id del usuario
@@ -74,7 +60,6 @@ namespace GestorSalud.Views
             perfilView.ShowDialog();
         }
 
-        // CRUD 2: Registro Peso
         private void AbrirRegistroPeso_Click(object sender, RoutedEventArgs e)
         {
             var registroPesoView = new RegistroPesoView(usuario.Id);
@@ -100,14 +85,12 @@ namespace GestorSalud.Views
             }
         }
 
-        // CRUD 3: Registro Comidas
         private void AbrirRegistroComidas_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("🍎 Registro de Comidas - Próximamente!", "En desarrollo",
                            MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // No-CRUD: Calculadora IMC
         private void AbrirCalculadoraIMC_Click(object sender, RoutedEventArgs e)
         {
             CalculadoraIMCView imcView = new CalculadoraIMCView(usuario.Id);
@@ -121,24 +104,24 @@ namespace GestorSalud.Views
             }
         }
 
-        // CRUD 4: Hidratación
         private void AbrirHidratacion_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("💧 Hidratación - Próximamente!", "En desarrollo",
-                           MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        // CRUD 5: Actividad Física
-        private void AbrirActividadFisica_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("🏃 Actividad Física - Próximamente!", "En desarrollo",
-                           MessageBoxButton.OK, MessageBoxImage.Information);
+            HidratacionView hidratacionView = new HidratacionView(usuario.Id);
+            hidratacionView.Show();
+            this.Close();
         }
 
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             LoginView loginView = new LoginView();
             loginView.Show();
+            this.Close();
+        }
+
+        private void AbrirActividadFisica_Click(object sender, RoutedEventArgs e)
+        {
+            EjerciciosView ejerciciosView = new EjerciciosView(usuario.Id);
+            ejerciciosView.Show();
             this.Close();
         }
     }
