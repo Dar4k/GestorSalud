@@ -87,8 +87,8 @@ namespace GestorSalud.Views
 
         private void AbrirRegistroComidas_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("🍎 Registro de Comidas - Próximamente!", "En desarrollo",
-                           MessageBoxButton.OK, MessageBoxImage.Information);
+            var comidasView = new RegistroComidaView(usuario.Id);
+            comidasView.ShowDialog();
         }
 
         private void AbrirCalculadoraIMC_Click(object sender, RoutedEventArgs e)
@@ -109,6 +109,12 @@ namespace GestorSalud.Views
             HidratacionView hidratacionView = new HidratacionView(usuario.Id);
             hidratacionView.Show();
             this.Close();
+        }
+
+        private void AbrirInformeNutricional_Click(object sender, RoutedEventArgs e)
+        {
+            var informeView = new InformeNutricionalView(usuario.Id);
+            informeView.ShowDialog();
         }
 
         private void CerrarSesion_Click(object sender, RoutedEventArgs e)
