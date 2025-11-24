@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Mi Salud - Dashboard" Height="694" Width="1277" WindowStartupLocation="CenterScreen">
     <Grid Background="#f8f9fa">
-        <!-- Header -->
+        
         <Border Background="#27ae60" Height="70" VerticalAlignment="Top">
             <Grid>
                 <TextBlock Text="🍎 MI GESTOR DE NUTRICIÓN Y BIENESTAR" 
@@ -18,7 +18,7 @@
             </Grid>
         </Border>
 
-        <!-- Estadísticas Rápidas -->
+        
         <Border Background="White" CornerRadius="10" Margin="20,90,20,0" Height="100" 
             BorderBrush="#ddd" BorderThickness="1" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -45,38 +45,38 @@
             </StackPanel>
         </Border>
 
-        <!-- Menú Principal -->
+        
         <StackPanel Margin="20,200,20,20">
             <TextBlock Text="¿Qué quieres registrar hoy?" FontSize="16" FontWeight="Bold" 
                   Margin="0,0,0,20" Foreground="#333"/>
 
             <WrapPanel>
-                <!-- CRUD 1: Perfil Salud -->
+                
                 <Button Content="👤 Mi Perfil Salud" Width="180" Height="80" Margin="10" 
                     Background="#3498db" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirPerfilSalud_Click"/>
 
-                <!-- CRUD 2: Registro Peso -->
+                
                 <Button Content="⚖️ Registrar Peso" Width="180" Height="80" Margin="10" 
                     Background="#2ecc71" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirRegistroPeso_Click"/>
 
-                <!-- CRUD 3: Registro Comidas -->
+
                 <Button Content="🍎 Comidas Hoy" Width="180" Height="80" Margin="10" 
                     Background="#e67e22" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirRegistroComidas_Click"/>
 
-                <!-- No-CRUD: Calculadora IMC -->
+
                 <Button Content="📊 Calcular IMC" Width="180" Height="80" Margin="10" 
                     Background="#9b59b6" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirCalculadoraIMC_Click"/>
 
-                <!-- CRUD 4: Hidratación -->
+                
                 <Button Content="💧 Hidratación" Width="180" Height="80" Margin="10" 
                     Background="#2196f3" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirHidratacion_Click"/>
 
-                <!-- CRUD 5: Actividad Física -->
+               
                 <Button Content="🏃 Actividad Física" Width="180" Height="80" Margin="10"
                         Background="#e74c3c" Foreground="White" FontWeight="Bold" 
                         FontSize="14" Click="AbrirActividadFisica_Click"/>
@@ -86,6 +86,12 @@
                 Background="#95a5a6" Foreground="White" Click="CerrarSesion_Click" 
                 HorizontalAlignment="Center"/>
         </StackPanel>
+
+        <Button Content="📈 Informe Nutricional" Width="154" Height="26" Margin="20,0,0,34"
+        VerticalAlignment="Bottom" HorizontalAlignment="Left"
+        Background="#f39c12" Foreground="White" FontWeight="Bold" 
+        FontSize="13" Click="AbrirInformeNutricional_Click" RenderTransformOrigin="0.633,-0.06"/>
+
     </Grid>
 </Window>
 

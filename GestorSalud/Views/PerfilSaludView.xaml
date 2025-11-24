@@ -1,0 +1,79 @@
+﻿<Window x:Class="GestorSalud.Views.PerfilSaludView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mi Perfil de Salud" Height="600" Width="500" 
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="#f8f9fa" Margin="15">
+        <Border Background="White" CornerRadius="10" Padding="20" 
+                BorderBrush="#ddd" BorderThickness="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    
+                    <StackPanel HorizontalAlignment="Center" Margin="0,0,0,15">
+                        <TextBlock Text="👤" FontSize="24" HorizontalAlignment="Center"/>
+                        <TextBlock Text="MI PERFIL DE SALUD" FontSize="16" FontWeight="Bold" 
+                                  Foreground="#333" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    
+                    <GroupBox Header="Información Personal" FontWeight="Bold" Margin="0,0,0,10">
+                        <StackPanel>
+                            <Label Content="Fecha de Nacimiento:"/>
+                            <DatePicker x:Name="dpFechaNacimiento" Height="30" FontSize="13"/>
+
+                            <Label Content="Género:" Margin="0,8,0,0"/>
+                            <ComboBox x:Name="cbGenero" Height="30" FontSize="13">
+                                <ComboBoxItem Content="Masculino"/>
+                                <ComboBoxItem Content="Femenino"/>
+                                <ComboBoxItem Content="Otro"/>
+                            </ComboBox>
+
+                            <Label Content="Altura (metros):" Margin="0,8,0,0"/>
+                            <TextBox x:Name="txtAltura" Height="30" FontSize="13" Text="1.70"
+                                    ToolTip="Ejemplo: 1.70 (máximo 2.50)"/>
+
+                            <Label Content="Objetivo de Peso (kg):" Margin="0,8,0,0"/>
+                            <TextBox x:Name="txtObjetivoPeso" Height="30" FontSize="13"
+                                    ToolTip="Peso que deseas alcanzar (opcional)"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                   
+                    <GroupBox Header="Nivel de Actividad" FontWeight="Bold" Margin="0,0,0,10">
+                        <StackPanel>
+                            <ComboBox x:Name="cbNivelActividad" Height="30" FontSize="13">
+                                <ComboBoxItem Content="Sedentario"/>
+                                <ComboBoxItem Content="Moderado"/>
+                                <ComboBoxItem Content="Activo"/>
+                                <ComboBoxItem Content="Muy Activo"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </GroupBox>
+
+                   
+                    <GroupBox Header="Información Médica" FontWeight="Bold" Margin="0,0,0,15">
+                        <StackPanel>
+                            <Label Content="Condiciones médicas:"/>
+                            <TextBox x:Name="txtCondicionesMedicas" Height="60" FontSize="13" 
+                                    TextWrapping="Wrap" AcceptsReturn="True"
+                                    ToolTip="Enfermedades crónicas o condiciones médicas"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                   
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <Button Content="💾 GUARDAR" Background="#27ae60" 
+                                Foreground="White" FontWeight="Bold" Height="30" 
+                                Width="120" Margin="5,0" Click="Guardar_Click"/>
+                        <Button Content="📊 HISTORIAL" Background="#9b59b6" 
+                                Foreground="White" FontWeight="Bold" Height="30" 
+                                Width="120" Margin="5,0" Click="HistorialPeso_Click"/>
+                        <Button Content="❌ CERRAR" Background="#95a5a6" 
+                                Foreground="White" Height="30" 
+                                Width="80" Margin="5,0" Click="Cerrar_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

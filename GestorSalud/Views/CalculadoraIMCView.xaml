@@ -10,7 +10,7 @@
         <Border Background="White" CornerRadius="10" Padding="25" 
                 BorderBrush="#ddd" BorderThickness="1" Height="460" VerticalAlignment="Center">
             <StackPanel>
-                <!-- Header -->
+                
                 <StackPanel HorizontalAlignment="Center" Margin="0,0,0,20">
                     <TextBlock Text="⚖️" FontSize="30" HorizontalAlignment="Center"/>
                     <TextBlock Text="CALCULADORA IMC" FontSize="18" FontWeight="Bold" 
@@ -19,7 +19,7 @@
                               Foreground="#666" HorizontalAlignment="Center"/>
                 </StackPanel>
 
-                <!-- Campos de entrada -->
+                
                 <Label Content="Peso (kg):" FontWeight="Bold"/>
                 <TextBox x:Name="txtPeso" Height="35" FontSize="14" 
                         Text="70" TextAlignment="Center"/>
@@ -28,12 +28,12 @@
                 <TextBox x:Name="txtAltura" Height="35" FontSize="14" 
                         Text="1.75" TextAlignment="Center"/>
 
-                <!-- Botón Calcular -->
+                
                 <Button Content="🎯 CALCULAR IMC" Background="#e67e22" 
                         Foreground="White" FontWeight="Bold" Height="35" 
                         FontSize="13" Margin="0,15,0,10" Click="Calcular_Click"/>
 
-                <!-- Resultados -->
+                
                 <Border Background="#ecf0f1" CornerRadius="8" Padding="15" 
                         Margin="0,10,0,0" Visibility="Collapsed" x:Name="borderResultado">
                     <StackPanel>
@@ -42,7 +42,7 @@
                         <TextBlock x:Name="txtClasificacion" FontSize="14" 
                                   HorizontalAlignment="Center" Margin="0,5,0,0"/>
 
-                        <!-- Barra de progreso visual -->
+                        
                         <Border Height="15" Background="#bdc3c7" CornerRadius="7" 
                                 Margin="0,10,0,5">
                             <Border x:Name="barraProgreso" Height="15" 
@@ -56,11 +56,10 @@
                     </StackPanel>
                 </Border>
 
-                <!-- Botón Cerrar -->
+                
                 <Button Content="CERRAR" Background="#95a5a6" Foreground="White" 
                         Height="35" Margin="0,15,0,0" Click="Cerrar_Click"/>
             </StackPanel>
         </Border>
     </Grid>
 </Window>
- 
