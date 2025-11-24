@@ -35,7 +35,7 @@ namespace GestorSalud.Views
         {
             try
             {
-                // Validar campos vacíos
+                
                 if (string.IsNullOrWhiteSpace(txtPeso.Text) || string.IsNullOrWhiteSpace(txtAltura.Text))
                 {
                     MessageBox.Show("Por favor ingresa tanto el peso como la altura.", "Datos incompletos",
@@ -43,7 +43,7 @@ namespace GestorSalud.Views
                     return false;
                 }
 
-                // Convertir valores
+                
                 if (double.TryParse(txtPeso.Text.Replace(".", ","), out double peso) &&
                     double.TryParse(txtAltura.Text.Replace(".", ","), out double altura))
                 {
@@ -54,18 +54,18 @@ namespace GestorSalud.Views
                         return false;
                     }
 
-                    if (altura > 3) // Validar altura razonable
+                    if (altura > 3) 
                     {
                         MessageBox.Show("Por favor ingresa la altura en metros (ej: 1.75 no 175).", "Altura inválida",
                                       MessageBoxButton.OK, MessageBoxImage.Warning);
                         return false;
                     }
 
-                    // Calcular IMC usando el controller
+                    
                     double imc = registroController.CalcularIMC(peso, altura);
                     string clasificacion = registroController.ClasificarIMC(imc);
 
-                    // Mostrar resultados
+                    
                     txtIMCResultado.Text = $"IMC Calculado: {imc:F2}";
                     txtClasificacion.Text = clasificacion;
                     borderIMC.Visibility = Visibility.Visible;
@@ -112,7 +112,7 @@ namespace GestorSalud.Views
                     return;
                 }
 
-                // Usar el controller para guardar
+                
                 bool guardado = registroController.GuardarRegistroPeso(
                     usuarioId,
                     peso,
@@ -131,7 +131,7 @@ namespace GestorSalud.Views
                                   MessageBoxButton.OK,
                                   MessageBoxImage.Information);
 
-                    // Cerrar la ventana retornando TRUE (indicando que se guardó exitosamente)
+                    
                     this.DialogResult = true;
                     this.Close();
                 }

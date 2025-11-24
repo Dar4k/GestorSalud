@@ -13,17 +13,17 @@ namespace GestorSalud.Services
         {
             try
             {
-                // Primero verificar si ya existe un perfil para este usuario
+                
                 var perfilExistente = ObtenerPerfilSalud(perfil.UsuarioId);
 
                 if (perfilExistente != null)
                 {
-                    // ACTUALIZAR perfil existente
+                    
                     return ActualizarPerfilSalud(perfil);
                 }
                 else
                 {
-                    // INSERTAR nuevo perfil
+                    
                     string query = @"INSERT INTO perfiles_salud 
                            (usuario_id, fecha_nacimiento, genero, altura, objetivo_peso, 
                             nivel_actividad, condiciones_medicas) 

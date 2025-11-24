@@ -44,7 +44,7 @@ namespace GestorSalud.Views
                                           MessageBoxButton.OK,
                                           MessageBoxImage.Information);
 
-                            // Retornar true indicando que se guardó exitosamente
+                           
                             this.DialogResult = true;
                             this.Close();
                         }

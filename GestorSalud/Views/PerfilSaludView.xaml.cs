@@ -22,7 +22,7 @@ namespace GestorSalud.Views
             var perfil = perfilController.ObtenerPerfilSalud(usuarioId);
             if (perfil != null)
             {
-                // Cargar datos existentes
+                
                 dpFechaNacimiento.SelectedDate = perfil.FechaNacimiento;
                 cbGenero.Text = perfil.Genero;
                 txtAltura.Text = perfil.Altura.ToString("0.00");
@@ -32,8 +32,8 @@ namespace GestorSalud.Views
             }
             else
             {
-                // Valores por defecto para nuevo perfil
-                dpFechaNacimiento.SelectedDate = DateTime.Now.AddYears(-30); // 30 años por defecto
+               
+                dpFechaNacimiento.SelectedDate = DateTime.Now.AddYears(-30); 
                 cbGenero.SelectedIndex = 0;
                 cbNivelActividad.SelectedIndex = 0;
             }
@@ -43,7 +43,7 @@ namespace GestorSalud.Views
         {
             try
             {
-                // Validaciones
+                
                 if (dpFechaNacimiento.SelectedDate == null)
                 {
                     MessageBox.Show("Por favor selecciona tu fecha de nacimiento.", "Error",
@@ -51,7 +51,7 @@ namespace GestorSalud.Views
                     return;
                 }
 
-                // Validar altura (decimal(3,2) = máximo 9.99)
+                
                 if (string.IsNullOrWhiteSpace(txtAltura.Text) ||
                     !decimal.TryParse(txtAltura.Text, out decimal altura) ||
                     altura <= 0 || altura >= 10)
@@ -61,7 +61,7 @@ namespace GestorSalud.Views
                     return;
                 }
 
-                // Validar objetivo peso si se ingresó
+                
                 decimal? objetivoPeso = null;
                 if (!string.IsNullOrWhiteSpace(txtObjetivoPeso.Text))
                 {
@@ -74,7 +74,7 @@ namespace GestorSalud.Views
                     objetivoPeso = objetivo;
                 }
 
-                // Crear modelo
+                
                 var perfil = new PerfilSaludModel
                 {
                     UsuarioId = usuarioId,
@@ -86,7 +86,7 @@ namespace GestorSalud.Views
                     CondicionesMedicas = txtCondicionesMedicas.Text ?? ""
                 };
 
-                // Guardar
+                
                 bool guardado = perfilController.GuardarPerfilSalud(perfil);
 
                 if (guardado)

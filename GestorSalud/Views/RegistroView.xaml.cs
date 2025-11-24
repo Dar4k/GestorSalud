@@ -18,7 +18,7 @@ namespace GestorSalud.Views
 {
     public partial class RegistroView : Window
     {
-        //Services.DBUsuarios db = new Services.DBUsuarios();
+        
         UsuariosController usuariosController = new UsuariosController();
         public RegistroView()
         {

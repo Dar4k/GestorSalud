@@ -17,9 +17,7 @@ using GestorSalud.Models;
 
 namespace GestorSalud.Views
 {
-    /// <summary>
-    /// Lógica de interacción para InformeNutricionalView.xaml
-    /// </summary>
+    
     public partial class InformeNutricionalView : Window
     {
         public InformeNutricionalView(int usuarioId)

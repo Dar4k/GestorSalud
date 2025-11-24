@@ -10,7 +10,7 @@ namespace GestorSalud.Controllers
 
         public bool GuardarRegistroPeso(int usuarioId, double peso, double altura, DateTime fechaRegistro, string notas = "")
         {
-            // Calcular IMC
+            
             double imc = CalcularIMC(peso, altura);
             string clasificacion = ClasificarIMC(imc);
 

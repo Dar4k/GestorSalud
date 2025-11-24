@@ -26,7 +26,7 @@
                          MaxHeight="500"
                          Padding="0" Margin="0">
                 <StackPanel>
-                    <!-- Header -->
+                    
                     <StackPanel HorizontalAlignment="Center" Margin="0,0,0,15">
                         <TextBlock Text="⚖️" FontSize="28" HorizontalAlignment="Center" Margin="0,0,0,5"/>
                         <TextBlock Text="REGISTRAR PESO" FontSize="16" FontWeight="Bold" 
@@ -36,28 +36,28 @@
                                   TextWrapping="Wrap" TextAlignment="Center" MaxWidth="300"/>
                     </StackPanel>
 
-                    <!-- Campos de registro -->
+                    
                     <StackPanel Margin="0,10,0,0">
 
-                        <!-- Peso -->
+                        
                         <Label Content="Peso (kg):"/>
                         <TextBox x:Name="txtPeso" Height="35" 
                                 TextAlignment="Center" Text="66"
                                 ToolTip="Ingresa tu peso en kilogramos"/>
 
-                        <!-- Altura -->
+                        
                         <Label Content="Altura (metros):"/>
                         <TextBox x:Name="txtAltura" Height="35" 
                                 TextAlignment="Center" Text="1.70"
                                 ToolTip="Ingresa tu altura en metros (ej: 1.70)"/>
 
-                        <!-- Fecha -->
+                        
                         <Label Content="Fecha de registro:"/>
                         <DatePicker x:Name="dpFechaRegistro" Height="35" 
                                    SelectedDate="{x:Static system:DateTime.Today}"
                                    FontSize="13"/>
 
-                        <!-- Notas -->
+                        
                         <Label Content="Notas (opcional):"/>
                         <TextBox x:Name="txtNotas" Height="50" 
                                 TextWrapping="Wrap" AcceptsReturn="True" 
@@ -65,7 +65,7 @@
                                 ToolTip="Observaciones sobre tu peso"/>
                     </StackPanel>
 
-                    <!-- Información IMC -->
+                    
                     <Border Background="#ecf0f1" CornerRadius="8" Padding="12" 
                             Margin="0,15,0,10" x:Name="borderIMC" 
                             Visibility="Collapsed" MaxWidth="350">
@@ -78,8 +78,8 @@
                                       TextWrapping="Wrap" TextAlignment="Center"/>
                         </StackPanel>
                     </Border>
-
-                    <!-- Botones -->
+                    
+                    
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
                         <Button Content="💾 GUARDAR" Background="#27ae60" 
                                 Foreground="White" FontWeight="Bold" Height="35" 

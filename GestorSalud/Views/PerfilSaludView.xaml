@@ -8,14 +8,14 @@
                 BorderBrush="#ddd" BorderThickness="1">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <!-- Header -->
+                    
                     <StackPanel HorizontalAlignment="Center" Margin="0,0,0,15">
                         <TextBlock Text="👤" FontSize="24" HorizontalAlignment="Center"/>
                         <TextBlock Text="MI PERFIL DE SALUD" FontSize="16" FontWeight="Bold" 
                                   Foreground="#333" HorizontalAlignment="Center"/>
                     </StackPanel>
 
-                    <!-- Información Personal -->
+                    
                     <GroupBox Header="Información Personal" FontWeight="Bold" Margin="0,0,0,10">
                         <StackPanel>
                             <Label Content="Fecha de Nacimiento:"/>
@@ -38,7 +38,7 @@
                         </StackPanel>
                     </GroupBox>
 
-                    <!-- Nivel de Actividad -->
+                   
                     <GroupBox Header="Nivel de Actividad" FontWeight="Bold" Margin="0,0,0,10">
                         <StackPanel>
                             <ComboBox x:Name="cbNivelActividad" Height="30" FontSize="13">
@@ -50,7 +50,7 @@
                         </StackPanel>
                     </GroupBox>
 
-                    <!-- Información Médica -->
+                   
                     <GroupBox Header="Información Médica" FontWeight="Bold" Margin="0,0,0,15">
                         <StackPanel>
                             <Label Content="Condiciones médicas:"/>
@@ -60,7 +60,7 @@
                         </StackPanel>
                     </GroupBox>
 
-                    <!-- Botones -->
+                   
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
                         <Button Content="💾 GUARDAR" Background="#27ae60" 
                                 Foreground="White" FontWeight="Bold" Height="30" 

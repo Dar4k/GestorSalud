@@ -51,12 +51,12 @@
                   Margin="0,0,0,20" Foreground="#333"/>
 
             <WrapPanel>
-                <!-- CRUD 1: Perfil Salud -->
+                
                 <Button Content="👤 Mi Perfil Salud" Width="180" Height="80" Margin="10" 
                     Background="#3498db" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirPerfilSalud_Click"/>
 
-                <!-- CRUD 2: Registro Peso -->
+                
                 <Button Content="⚖️ Registrar Peso" Width="180" Height="80" Margin="10" 
                     Background="#2ecc71" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirRegistroPeso_Click"/>
@@ -71,12 +71,12 @@
                     Background="#9b59b6" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirCalculadoraIMC_Click"/>
 
-                <!-- CRUD 4: Hidratación -->
+                
                 <Button Content="💧 Hidratación" Width="180" Height="80" Margin="10" 
                     Background="#2196f3" Foreground="White" FontWeight="Bold" 
                     FontSize="14" Click="AbrirHidratacion_Click"/>
 
-                <!-- CRUD 5: Actividad Física -->
+               
                 <Button Content="🏃 Actividad Física" Width="180" Height="80" Margin="10"
                         Background="#e74c3c" Foreground="White" FontWeight="Bold" 
                         FontSize="14" Click="AbrirActividadFisica_Click"/>

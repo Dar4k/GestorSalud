@@ -14,18 +14,18 @@ namespace GestorSalud.Controllers
 
         public bool GuardarPerfilSalud(PerfilSaludModel perfil)
         {
-            // Verificar si ya existe un perfil para este usuario
+            
             var perfilExistente = dbPerfilSalud.ObtenerPerfilSalud(perfil.UsuarioId);
 
             if (perfilExistente != null)
             {
-                // Actualizar perfil existente
+                
                 perfil.Id = perfilExistente.Id;
                 return dbPerfilSalud.ActualizarPerfilSalud(perfil);
             }
             else
             {
-                // Crear nuevo perfil
+                
                 return dbPerfilSalud.GuardarPerfilSalud(perfil);
             }
         }
